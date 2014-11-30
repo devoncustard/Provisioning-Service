@@ -55,19 +55,19 @@ namespace CertWorker
         private void ProcessQueue()
         {
 
-            var m = GetNextMessage("ENCRequest", "provsvc");
+            var m = GetNextMessage("CertSignRequest", "provsvc");
 
             try
             {
                 while (m != null)
                 {
                     ProvisionTask task = (ProvisionTask)m.Body;
-                    log(String.Format("Task {1} received.{0}Updating ENC", Environment.NewLine, task.taskid));
+                    log(String.Format("Task {1} received.{0}Signing Cert", Environment.NewLine, task.taskid));
 
                     m = null;
-                    UpdateENC(task);
+                    SignCert(task);
 
-                    m = GetNextMessage("ENCRequest", "ProvSvc");
+                    m = GetNextMessage("CertSignRequest", "ProvSvc");
                     task.state++;
                     log(String.Format("Passing task back to decider"));
                 }
@@ -79,6 +79,10 @@ namespace CertWorker
 
         }
 
+        private void SignCert(ProvisionTask task)
+        {
+            ;
+        }
 
     }
 }

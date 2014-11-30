@@ -63,13 +63,18 @@ namespace ProvisioningDecider
                         //ignore
                         break;
                     case 2://Domain Object Created
-                        //Shortcut to provider
-                        log(String.Format("Task ID {0} transition to state 2. Domain object created. Hostname will be {1}.{3} Sending task to {2} provider",task.taskid,task.hostname,task.provider,Environment.NewLine));
-                        log(String.Format("Also sending ENC update request"));
-                        task.state = 3;
-                        SendMessage(String.Format("{0}provider", task.provider), "provsvc", task);
-                        SendMessage("ENCRequest", "provsvc", task);
                         
+                        log(String.Format("Task ID {0} transition to state 2. Domain object created. Hostname will be {1}.{3} Sending task to {2} provider",task.taskid,task.hostname,task.provider,Environment.NewLine));
+                        task.state = 3;
+                        string provider="";
+                        switch (task.provider)
+                        {
+                            case Provider.Vagrant:
+                                provider = "Vag";
+                                break;
+
+                        }
+                        SendMessage(String.Format("{0}provider", provider), "provsvc", task);
                         break;
                     case 3:
                         break;
@@ -82,15 +87,15 @@ namespace ProvisioningDecider
                     case 5:
                         break;
                     case 6:
-                        log(String.Format("Task ID {0} transition to state 6.I.", task.taskid));
-                        task.state=6;
-                        SendMessage("provision", "provsvc", task);
+                        log(String.Format("Task ID {0} transition to state 6.Cert needs to be signed", task.taskid));
+                        task.state=7;
+                        SendMessage("certsignrequest", "provsvc", task);
                         break;
-                    case 7://RI Stuff Started
+                    case 7:
                         break;
-                    case 8://RI Complete
+                    case 8:
                         break;
-                    case 9://Cert sign requested
+                    case 9:
                         break;
                     case 10://Cert signed
                         break;

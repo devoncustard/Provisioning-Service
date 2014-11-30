@@ -59,11 +59,12 @@ namespace RemoteInvokeWorker
                             break;
                                    
                     }
-                    m = null;
-
-                    m=GetNextMessage("RemoteInvoke","ProvSvc");
                     task.state++;
                     log(String.Format("Passing task back to decider"));
+                    SendMessage(task,"Provision","provsvc");
+                    m = null;
+                    m=GetNextMessage("RemoteInvoke","ProvSvc");
+
                 }
             }
             catch (Exception ex)
@@ -73,6 +74,11 @@ namespace RemoteInvokeWorker
 
         }
 
+        private void SendMessage(ProvisionTask task,string queue,string server)
+        {
+            MessageQueue q = new MessageQueue(String.Format(@"FormatName:direct=OS:{0}\private$\{1}", server, queue));
+            q.Send(task);
+        }   
 
         private System.Messaging.Message GetNextMessage(string queue, string server)
         {
@@ -88,9 +94,7 @@ namespace RemoteInvokeWorker
             return m;
         }
 
-        private void RenameWindowsInstance(ProvisionTask task)
-        {
-        }
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -156,8 +160,24 @@ namespace RemoteInvokeWorker
                 ps.AddParameter("DomainName", task.domain);
                 ps.AddParameter("Credential", cred2);
                 ps.Invoke();
-                ;
-
+                ps.Commands.Clear();
+                ps.AddCommand("restart-computer");
+                ps.AddParameter("Force");
+                ps.Invoke();
+                Thread.Sleep(20000);//Gotta give the instance time to start shutting down
+            }
+            while (!Test4WinRM(task.IPAddress))
+            {
+                Thread.Sleep(5000);
+            }
+            using (Runspace runspace = RunspaceFactory.CreateRunspace(ci))
+            {
+                log(String.Format("Installing puppet agent version {0}",task.puppetversion));
+                runspace.Open();
+                PowerShell ps = PowerShell.Create();
+                ps.Runspace = runspace;
+                ps.AddScript(String.Format("cmd /c start /wait msiexec /qn /i c:\\slib\\puppet\\{0}\\puppet-{0}-x64.msi PUPPET_MASTER_SERVER={1} PUPPET_AGENT_CERTNAME={2}.{3}", task.puppetversion, task.puppetmaster, task.hostname.ToLower(), task.domain.ToLower()));
+                ps.Invoke();
             }
         }
 
