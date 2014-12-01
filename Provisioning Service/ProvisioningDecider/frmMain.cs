@@ -16,7 +16,7 @@ using System.Net.Http.Headers;
 using System.Web;
 
 
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 
 namespace ProvisioningDecider
 {
@@ -115,9 +115,9 @@ namespace ProvisioningDecider
             }
 
         }
-        private Provisioning_Service_Shared_Objects.Image GetImageDetails(ProvisionTask task)
+        private PSSO.Image GetImageDetails(ProvisionTask task)
         {
-            Provisioning_Service_Shared_Objects.Image image = null;
+            PSSO.Image image = null;
             try
             {
                 using (var client = new HttpClient())
@@ -126,7 +126,7 @@ namespace ProvisioningDecider
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     var response = client.GetAsync(String.Format(@"http://webbake/bakery/api/image/?ImageType=1&CommonName={0}&Provider={1}", task.commonname, (int)task.provider)).Result;
-                    image = response.Content.ReadAsAsync<Provisioning_Service_Shared_Objects.Image>().Result;
+                    image = response.Content.ReadAsAsync<PSSO.Image>().Result;
                 }
             }
             catch (Exception ex)
@@ -236,6 +236,11 @@ namespace ProvisioningDecider
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtLog.Clear();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

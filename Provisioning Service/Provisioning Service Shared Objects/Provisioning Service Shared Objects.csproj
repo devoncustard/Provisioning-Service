@@ -7,8 +7,8 @@
     <ProjectGuid>{5B427DF9-F764-4906-B0E4-EEB04A2B61DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Provisioning_Service_Shared_Objects</RootNamespace>
-    <AssemblyName>Provisioning Service Shared Objects</AssemblyName>
+    <RootNamespace>PSSO</RootNamespace>
+    <AssemblyName>PSSO</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,6 +47,9 @@
     <Compile Include="StackRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" c:\provsvc</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

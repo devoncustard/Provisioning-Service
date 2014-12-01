@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtLog = new System.Windows.Forms.TextBox();
             this.buttonToggleTimer = new System.Windows.Forms.Button();
             this.timerProcessQueue = new System.Windows.Forms.Timer(this.components);
@@ -38,10 +39,13 @@
             // 
             // txtLog
             // 
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.Location = new System.Drawing.Point(13, 38);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(306, 282);
+            this.txtLog.Size = new System.Drawing.Size(359, 311);
             this.txtLog.TabIndex = 0;
             // 
             // buttonToggleTimer
@@ -82,11 +86,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 332);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.chkTimerEnabled);
             this.Controls.Add(this.buttonToggleTimer);
             this.Controls.Add(this.txtLog);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "ADMgmt Worker";
             this.ResumeLayout(false);

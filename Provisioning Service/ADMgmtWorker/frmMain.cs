@@ -14,7 +14,7 @@ using System.Collections;
 using System.Messaging;
 using ADMgmtWorker.Interfaces;
 using ADMgmtWorker.Classes;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 using System.DirectoryServices;
 
 

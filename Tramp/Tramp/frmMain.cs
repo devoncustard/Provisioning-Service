@@ -11,7 +11,7 @@ using System.Messaging;
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 using System.IO;
 namespace Tramp
 {

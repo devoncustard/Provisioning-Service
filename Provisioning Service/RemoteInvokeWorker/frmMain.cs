@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 using System.Security;
 using System.Threading;
 
@@ -194,6 +194,11 @@ namespace RemoteInvokeWorker
                 else
                     return true;
             }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
 
 

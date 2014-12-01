@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Provisioning_Service_Shared_Objects
+namespace PSSO
 {
     public class ProvisionTask
     {

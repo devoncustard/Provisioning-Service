@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Messaging;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 
 namespace Requester
 {

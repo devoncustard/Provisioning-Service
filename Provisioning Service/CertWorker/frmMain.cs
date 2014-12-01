@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 using System.Messaging;
 using Renci.SshNet;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace CertWorker
 {
@@ -65,11 +67,12 @@ namespace CertWorker
                     log(String.Format("Task {1} received.{0}Signing Cert", Environment.NewLine, task.taskid));
 
                     m = null;
-                    SignCert(task);
-
-                    m = GetNextMessage("CertSignRequest", "ProvSvc");
-                    task.state++;
-                    log(String.Format("Passing task back to decider"));
+                    if (SignCert(task))
+                    {
+                        m = GetNextMessage("CertSignRequest", "ProvSvc");
+                        task.state++;
+                        log(String.Format("Passing task back to decider"));
+                    }
                 }
             }
             catch (Exception ex)
@@ -79,10 +82,28 @@ namespace CertWorker
 
         }
 
-        private void SignCert(ProvisionTask task)
+        private bool SignCert(ProvisionTask task)
         {
-            ;
+            //Check for old cert first and remove if necessary
+            var s=GetCertStatus(String.Format("{0}.{1}",task.hostname,task.domain),task.puppetmaster,task.environment);
+
+
+
+            return false;
         }
+
+        private object GetCertStatus(string certname,string puppetmaster,string environment)
+        {
+            HttpClient client = new HttpClient();
+            var response = client.GetAsync(String.Format("https://{0}:8140/{1}/certificate_status/{2}", puppetmaster, environment, certname)).Result;
+            return response;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

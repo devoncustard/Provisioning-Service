@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 using System.Messaging;
 using Renci.SshNet;
 
@@ -97,6 +97,15 @@ namespace ENCWorker
             sshclient.Dispose();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private void SendMessage(ProvisionTask task, string queue, string server)
+        {
+            MessageQueue q = new MessageQueue(String.Format(@"FormatName:direct=OS:{0}\private$\{1}", server, queue));
+            q.Send(task);
+        }   
     }
 }

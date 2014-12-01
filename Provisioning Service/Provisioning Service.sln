@@ -4,20 +4,38 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provisioning_Service", "Provisioning Service\Provisioning_Service.csproj", "{07082893-63EE-4FD3-8DA5-ADE12884A1D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provisioning Service Shared Objects", "Provisioning Service Shared Objects\Provisioning Service Shared Objects.csproj", "{5B427DF9-F764-4906-B0E4-EEB04A2B61DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADMgmtWorker", "ADMgmtWorker\ADMgmtWorker.csproj", "{AB4BAE9D-4057-4FE9-9212-2B449D0A3A6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteInvokeWorker", "RemoteInvokeWorker\RemoteInvokeWorker.csproj", "{E7B95FA3-661A-4B65-B5A8-60EC10B20B97}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvisioningDecider", "ProvisioningDecider\ProvisioningDecider.csproj", "{291AD1CB-06B5-4D26-9705-46BD3C6DA663}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{81BF92B5-9A45-45FF-A40F-09E9A1792525}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENCWorker", "ENCWorker\ENCWorker.csproj", "{370927BC-745B-4994-BE64-941E298955F9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertWorker", "CertWorker\CertWorker.csproj", "{F4AAA2D2-0DC4-4E14-B29C-378D65A5166E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

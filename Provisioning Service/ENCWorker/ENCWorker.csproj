@@ -31,9 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>puppet.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Provisioning Service Shared Objects">
-      <HintPath>..\Provisioning Service Shared Objects\bin\Debug\Provisioning Service Shared Objects.dll</HintPath>
+    <Reference Include="PSSO">
+      <HintPath>..\Provisioning Service Shared Objects\bin\Debug\PSSO.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet">
       <HintPath>..\..\..\..\Users\Joe\Downloads\sshnet-40956\Renci.SshClient\Renci.SshNet\bin\Debug\Renci.SshNet.dll</HintPath>
@@ -84,7 +87,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="puppet.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" c:\provsvc</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -29,24 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.timUpdateUI = new System.Windows.Forms.Timer(this.components);
             this.chkEnableTimer = new System.Windows.Forms.CheckBox();
             this.btnToggleTimer = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtComplete = new System.Windows.Forms.TextBox();
-            this.txtENCRequest = new System.Windows.Forms.TextBox();
-            this.txtFailed = new System.Windows.Forms.TextBox();
-            this.txtNameRequest = new System.Windows.Forms.TextBox();
-            this.txtProvision = new System.Windows.Forms.TextBox();
-            this.txtRemoteInvoke = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtVagrantProvider = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtRemoteInvoke = new System.Windows.Forms.TextBox();
+            this.txtProvision = new System.Windows.Forms.TextBox();
+            this.txtNameRequest = new System.Windows.Forms.TextBox();
+            this.txtFailed = new System.Windows.Forms.TextBox();
+            this.txtENCRequest = new System.Windows.Forms.TextBox();
+            this.txtComplete = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,107 +97,13 @@
             this.panel1.Size = new System.Drawing.Size(187, 244);
             this.panel1.TabIndex = 2;
             // 
-            // txtComplete
+            // txtVagrantProvider
             // 
-            this.txtComplete.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtComplete.Location = new System.Drawing.Point(112, 20);
-            this.txtComplete.Name = "txtComplete";
-            this.txtComplete.Size = new System.Drawing.Size(38, 20);
-            this.txtComplete.TabIndex = 3;
-            // 
-            // txtENCRequest
-            // 
-            this.txtENCRequest.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtENCRequest.Location = new System.Drawing.Point(112, 46);
-            this.txtENCRequest.Name = "txtENCRequest";
-            this.txtENCRequest.Size = new System.Drawing.Size(38, 20);
-            this.txtENCRequest.TabIndex = 4;
-            // 
-            // txtFailed
-            // 
-            this.txtFailed.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtFailed.Location = new System.Drawing.Point(112, 72);
-            this.txtFailed.Name = "txtFailed";
-            this.txtFailed.Size = new System.Drawing.Size(38, 20);
-            this.txtFailed.TabIndex = 5;
-            // 
-            // txtNameRequest
-            // 
-            this.txtNameRequest.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtNameRequest.Location = new System.Drawing.Point(112, 98);
-            this.txtNameRequest.Name = "txtNameRequest";
-            this.txtNameRequest.Size = new System.Drawing.Size(38, 20);
-            this.txtNameRequest.TabIndex = 6;
-            // 
-            // txtProvision
-            // 
-            this.txtProvision.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtProvision.Location = new System.Drawing.Point(112, 124);
-            this.txtProvision.Name = "txtProvision";
-            this.txtProvision.Size = new System.Drawing.Size(38, 20);
-            this.txtProvision.TabIndex = 7;
-            // 
-            // txtRemoteInvoke
-            // 
-            this.txtRemoteInvoke.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtRemoteInvoke.Location = new System.Drawing.Point(112, 150);
-            this.txtRemoteInvoke.Name = "txtRemoteInvoke";
-            this.txtRemoteInvoke.Size = new System.Drawing.Size(38, 20);
-            this.txtRemoteInvoke.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Complete";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "ENCRequest";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Failed";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 182);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "VagrantProvider";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 153);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "RemoteInvoke";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 127);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Provision";
+            this.txtVagrantProvider.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtVagrantProvider.Location = new System.Drawing.Point(112, 179);
+            this.txtVagrantProvider.Name = "txtVagrantProvider";
+            this.txtVagrantProvider.Size = new System.Drawing.Size(38, 20);
+            this.txtVagrantProvider.TabIndex = 16;
             // 
             // label7
             // 
@@ -207,13 +114,107 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "NameRequest";
             // 
-            // txtVagrantProvider
+            // label6
             // 
-            this.txtVagrantProvider.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtVagrantProvider.Location = new System.Drawing.Point(112, 179);
-            this.txtVagrantProvider.Name = "txtVagrantProvider";
-            this.txtVagrantProvider.Size = new System.Drawing.Size(38, 20);
-            this.txtVagrantProvider.TabIndex = 16;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(46, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Provision";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 153);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "RemoteInvoke";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 182);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "VagrantProvider";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(61, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Failed";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "ENCRequest";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(45, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Complete";
+            // 
+            // txtRemoteInvoke
+            // 
+            this.txtRemoteInvoke.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtRemoteInvoke.Location = new System.Drawing.Point(112, 150);
+            this.txtRemoteInvoke.Name = "txtRemoteInvoke";
+            this.txtRemoteInvoke.Size = new System.Drawing.Size(38, 20);
+            this.txtRemoteInvoke.TabIndex = 8;
+            // 
+            // txtProvision
+            // 
+            this.txtProvision.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtProvision.Location = new System.Drawing.Point(112, 124);
+            this.txtProvision.Name = "txtProvision";
+            this.txtProvision.Size = new System.Drawing.Size(38, 20);
+            this.txtProvision.TabIndex = 7;
+            // 
+            // txtNameRequest
+            // 
+            this.txtNameRequest.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtNameRequest.Location = new System.Drawing.Point(112, 98);
+            this.txtNameRequest.Name = "txtNameRequest";
+            this.txtNameRequest.Size = new System.Drawing.Size(38, 20);
+            this.txtNameRequest.TabIndex = 6;
+            // 
+            // txtFailed
+            // 
+            this.txtFailed.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtFailed.Location = new System.Drawing.Point(112, 72);
+            this.txtFailed.Name = "txtFailed";
+            this.txtFailed.Size = new System.Drawing.Size(38, 20);
+            this.txtFailed.TabIndex = 5;
+            // 
+            // txtENCRequest
+            // 
+            this.txtENCRequest.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtENCRequest.Location = new System.Drawing.Point(112, 46);
+            this.txtENCRequest.Name = "txtENCRequest";
+            this.txtENCRequest.Size = new System.Drawing.Size(38, 20);
+            this.txtENCRequest.TabIndex = 4;
+            // 
+            // txtComplete
+            // 
+            this.txtComplete.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtComplete.Location = new System.Drawing.Point(112, 20);
+            this.txtComplete.Name = "txtComplete";
+            this.txtComplete.Size = new System.Drawing.Size(38, 20);
+            this.txtComplete.TabIndex = 3;
             // 
             // frmMain
             // 
@@ -223,6 +224,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnToggleTimer);
             this.Controls.Add(this.chkEnableTimer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Dashboard";
             this.panel1.ResumeLayout(false);

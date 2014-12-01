@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtLog = new System.Windows.Forms.TextBox();
             this.chkTimerEnabled = new System.Windows.Forms.CheckBox();
             this.btnEnableTimer = new System.Windows.Forms.Button();
@@ -40,10 +41,10 @@
             this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLog.Location = new System.Drawing.Point(8, 36);
+            this.txtLog.Location = new System.Drawing.Point(12, 37);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(467, 477);
+            this.txtLog.Size = new System.Drawing.Size(360, 312);
             this.txtLog.TabIndex = 0;
             // 
             // chkTimerEnabled
@@ -73,12 +74,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 518);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.btnEnableTimer);
             this.Controls.Add(this.chkTimerEnabled);
             this.Controls.Add(this.txtLog);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Cert Worker";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

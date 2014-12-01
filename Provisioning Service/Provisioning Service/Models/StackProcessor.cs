@@ -5,7 +5,7 @@ using System.Web;
 using System.Messaging;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 
 namespace Provisioning_Service.Models
 {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtLog = new System.Windows.Forms.TextBox();
             this.chkTimerEnabled = new System.Windows.Forms.CheckBox();
             this.timerProcessQueue = new System.Windows.Forms.Timer(this.components);
@@ -41,7 +42,7 @@
             this.txtLog.Location = new System.Drawing.Point(13, 39);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(323, 393);
+            this.txtLog.Size = new System.Drawing.Size(359, 310);
             this.txtLog.TabIndex = 0;
             // 
             // chkTimerEnabled
@@ -81,13 +82,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 444);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnToggleTimer);
             this.Controls.Add(this.chkTimerEnabled);
             this.Controls.Add(this.txtLog);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Remote Invoke Worker";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

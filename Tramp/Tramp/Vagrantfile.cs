@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Management.Automation.Runspaces;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 
 namespace Tramp
 {

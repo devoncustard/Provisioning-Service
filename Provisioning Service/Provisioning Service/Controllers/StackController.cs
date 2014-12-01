@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Provisioning_Service.Models;
-using Provisioning_Service_Shared_Objects;
+using PSSO;
 
 namespace Provisioning_Service.Controllers
 {

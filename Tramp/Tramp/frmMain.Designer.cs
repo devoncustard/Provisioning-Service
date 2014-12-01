@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.timerProcessQueue = new System.Windows.Forms.Timer(this.components);
             this.buttonToggleTimer = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -56,7 +57,7 @@
             this.txtLog.Location = new System.Drawing.Point(13, 37);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(504, 294);
+            this.txtLog.Size = new System.Drawing.Size(359, 312);
             this.txtLog.TabIndex = 6;
             // 
             // chkTimerEnabled
@@ -70,7 +71,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(442, 8);
+            this.btnClear.Location = new System.Drawing.Point(260, 8);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 8;
@@ -82,12 +83,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 345);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.chkTimerEnabled);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.buttonToggleTimer);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Tramp";
             this.Load += new System.EventHandler(this.frmMain_Load);
