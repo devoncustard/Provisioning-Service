@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provisioning_Service", "Provisioning Service\Provisioning_Service.csproj", "{07082893-63EE-4FD3-8DA5-ADE12884A1D8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -36,6 +36,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertWorker", "CertWorker\Ce
 	ProjectSection(ProjectDependencies) = postProject
 		{5B427DF9-F764-4906-B0E4-EEB04A2B61DB} = {5B427DF9-F764-4906-B0E4-EEB04A2B61DB}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tramp", "..\Tramp\Tramp\Tramp.csproj", "{D62749FA-5D43-448E-999B-EB4049867ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Requester", "..\Requester\Requester\Requester.csproj", "{EC977FA2-56C8-4296-8BC8-55E4DB47EF8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakeryAPI", "..\BakeryAPI\BakeryAPI\BakeryAPI.csproj", "{08E9F121-C998-46F5-BB2B-29BB1B34DD8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,18 @@ Global
 		{F4AAA2D2-0DC4-4E14-B29C-378D65A5166E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4AAA2D2-0DC4-4E14-B29C-378D65A5166E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4AAA2D2-0DC4-4E14-B29C-378D65A5166E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62749FA-5D43-448E-999B-EB4049867ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62749FA-5D43-448E-999B-EB4049867ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62749FA-5D43-448E-999B-EB4049867ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62749FA-5D43-448E-999B-EB4049867ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC977FA2-56C8-4296-8BC8-55E4DB47EF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC977FA2-56C8-4296-8BC8-55E4DB47EF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC977FA2-56C8-4296-8BC8-55E4DB47EF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC977FA2-56C8-4296-8BC8-55E4DB47EF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E9F121-C998-46F5-BB2B-29BB1B34DD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E9F121-C998-46F5-BB2B-29BB1B34DD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E9F121-C998-46F5-BB2B-29BB1B34DD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E9F121-C998-46F5-BB2B-29BB1B34DD8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
