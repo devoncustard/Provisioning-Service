@@ -26,5 +26,6 @@ namespace PSSO
         public string IPAddress { get; set; }
         public string identifier { get; set; }
         public List<string> puppetclasses { get; set; }
+        public bool certsigned { get; set; }
     }
 }
