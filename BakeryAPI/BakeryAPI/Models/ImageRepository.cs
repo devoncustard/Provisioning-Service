@@ -12,16 +12,18 @@ namespace BakeryAPI.Models
     public class ImageRepository :IImageRepository
     {
         //private DataContext db = new DataContext("Data Source = 10.52.24.153; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
-        private DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
+        
 
         public IEnumerable<Images> GetAllImages()
         {
+            DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;"); 
             Table<Images> tblImages = db.GetTable<Images>();
             var images = from n in tblImages select n;
             return images;
         }
         public Images GetImageDetails(ImageRequest request)
         {
+            DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
             Table<Images> tblImages=db.GetTable<Images>();
             var image=(from n in tblImages
                            where n.ImageType==request.ImageType
@@ -33,6 +35,7 @@ namespace BakeryAPI.Models
         }
         public void DeleteImage(string id)
         {
+            DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
             Table<Images> tblImages = db.GetTable<Images>();
             var image = (from n in tblImages
                          where n.Id==id
@@ -43,6 +46,7 @@ namespace BakeryAPI.Models
         }
         public Images AddImage(Image image)
         {
+            DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
             Table<Images> tblImages = db.GetTable<Images>();
             Images newimage = new Images();
             newimage.BakedOn = Convert.ToDateTime(image.BakedOn);
@@ -61,7 +65,7 @@ namespace BakeryAPI.Models
         }
         public void ApproveImage(string id)
         {
-
+            DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
             return;
         }
     }
