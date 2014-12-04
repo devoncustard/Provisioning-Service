@@ -174,5 +174,10 @@ namespace ADMgmtWorker
         {
             txtLog.Clear();
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

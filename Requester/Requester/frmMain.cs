@@ -29,7 +29,7 @@ namespace Requester
             r.state = 0;
             r.commonname = "W2008R2-BASE";
             r.domain = "mojo.local";
-            r.environment = "mtest";
+            r.environment = "production";
             r.location = "benifold";
             r.provider = Provider.Vagrant;
             r.puppetmaster = "puppet.mojo.local";
