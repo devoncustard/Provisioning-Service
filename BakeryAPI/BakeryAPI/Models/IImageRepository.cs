@@ -13,7 +13,7 @@ namespace BakeryAPI.Models
     {
         IEnumerable<Images> GetAllImages();
         Images GetImageDetails(ImageRequest request);
-        void DeleteImage(string name);
+        void DeleteImage(string id);
         Images AddImage(Image image);
         void ApproveImage(string id);
     }

@@ -33,6 +33,7 @@ namespace BakeryAPI.Models
                            select n).First();
             return image;
         }
+
         public void DeleteImage(string id)
         {
             DataContext db = new DataContext("Data Source = achilles; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
