@@ -39,14 +39,12 @@ namespace Requester
             r.cpus = 2;
             r.memory = 2536;
             r.puppetclasses = new List<string>();
-            r.puppetclasses.Add("joeswebtest");
-            r.puppetclasses.Add("ioggoldbuild");
+            r.puppetclasses.Add("joet");
             request.Instances.Add(r);
 
             HttpClient client = new HttpClient();
             
             HttpResponseMessage response = client.PostAsJsonAsync("http://provsvc/provisioning/api/stack", request).Result;
-            //HttpResponseMessage response = client.PostAsJsonAsync("http://localhost:56030/api/stack", request).Result;
 
             ;
         }

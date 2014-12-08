@@ -11,8 +11,7 @@ namespace BakeryAPI2.Models
 {
     public class ImageRepository : IImageRepository
     {
-        //private DataContext db = new DataContext("Data Source = 10.52.24.153; Initial Catalog=Bakery; Integrated Security=False; User ID=Bakery;Password=bakery;");
-
+        
 
         public IEnumerable<Images> GetAllImages()
         {

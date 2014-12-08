@@ -125,7 +125,7 @@ namespace ProvisioningDecider
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    var response = client.GetAsync(String.Format(@"http://webbake/bakery/api/image/?ImageType=1&CommonName={0}&Provider={1}", task.commonname, (int)task.provider)).Result;
+                    var response = client.GetAsync(String.Format(@"http://webbake/bakery/api/image/?ImageType=2&CommonName={0}&Provider={1}", task.commonname, (int)task.provider)).Result;
                     image = response.Content.ReadAsAsync<PSSO.Image>().Result;
                 }
             }

@@ -176,7 +176,7 @@ namespace RemoteInvokeWorker
                 runspace.Open();
                 PowerShell ps = PowerShell.Create();
                 ps.Runspace = runspace;
-                ps.AddScript(String.Format("cmd /c start /wait msiexec /qn /i c:\\slib\\puppet\\{0}\\puppet-{0}-x64.msi PUPPET_MASTER_SERVER={1} PUPPET_AGENT_CERTNAME={2}.{3}", task.puppetversion, task.puppetmaster, task.hostname.ToLower(), task.domain.ToLower()));
+                ps.AddScript(String.Format("cmd /c start /wait msiexec /qn /i c:\\installers\\puppetagents\\puppet-{0}-x64.msi PUPPET_MASTER_SERVER={1} PUPPET_AGENT_CERTNAME={2}.{3}", task.puppetversion, task.puppetmaster, task.hostname.ToLower(), task.domain.ToLower()));
                 ps.Invoke();
             }
         }
