@@ -42,9 +42,6 @@
     <Reference Include="PSSO">
       <HintPath>..\Provisioning Service Shared Objects\bin\Debug\PSSO.dll</HintPath>
     </Reference>
-    <Reference Include="Renci.SshNet">
-      <HintPath>C:\Users\Joe\Downloads\sshnet-40956\Renci.SshClient\Renci.SshNet\bin\Debug\Renci.SshNet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -96,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cpr_certificate.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Renci.SshNet\Renci.SshNet.csproj">
+      <Project>{2f5f8c90-0bd1-424f-997c-7bc6280919d1}</Project>
+      <Name>Renci.SshNet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
