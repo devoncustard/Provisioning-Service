@@ -42,14 +42,16 @@ namespace Tramp
                     m = q.Receive(new TimeSpan(0, 0, 1));
                 }
                 catch (Exception ex)
-                {}
+                {
+                    Debug.WriteLine(ex.Message);
+                }
                 if (m!=null)
                 {
                     ProvisionTask task = (ProvisionTask)m.Body;
                     log(String.Format("Processing provision request for Task {0}. Hostname will be {1}{4}vCPU's {2}{4}RAM {3}", task.taskid, task.hostname, task.cpus, task.memory,Environment.NewLine));
                     var vm = new VagrantVM(task);
                     ProvisionVM(vm);
-                    task.state=4;
+                    task.state++;
                     MessageQueue rq = new MessageQueue(@"FormatName:direct=OS:provsvc\private$\Provision");
                     log(String.Format("Instance IP: {1}{0}Instance Identifier: {2}", Environment.NewLine, task.IPAddress, task.identifier));
                     log(String.Format("Task {0} passing back to decider", task.taskid));
@@ -131,7 +133,9 @@ namespace Tramp
                 GetIdentifier(vm);
             }
             catch (Exception ex)
-            { throw; }
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
         private void CreateVagrantFile(VagrantVM vm)
         {
@@ -183,7 +187,9 @@ namespace Tramp
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
 
             ;
 
@@ -217,7 +223,9 @@ namespace Tramp
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
         private void PowerOnVM(VagrantVM vm)
         {
@@ -237,7 +245,9 @@ namespace Tramp
                 }
             }
             catch (Exception ex)
-            { ; }
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
         private void GetIPAddress(VagrantVM vm)
         {
@@ -278,7 +288,9 @@ namespace Tramp
                 }
             }
             catch (Exception ex)
-            { ;}
+            {
+                Debug.WriteLine(ex.Message);
+            }
 
         }
         private void GetIdentifier(VagrantVM vm)

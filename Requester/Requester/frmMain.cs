@@ -27,7 +27,7 @@ namespace Requester
             StackRequest request = new StackRequest();
             ProvisionTask r = new ProvisionTask();
             r.state = 0;
-            r.commonname = "W2008R2-BASE";
+            r.commonname = "W2008R2-Source";
             r.domain = "mojo.local";
             r.environment = "production";
             r.location = "benifold";
@@ -39,7 +39,7 @@ namespace Requester
             r.cpus = 2;
             r.memory = 2536;
             r.puppetclasses = new List<string>();
-            r.puppetclasses.Add("joet");
+            r.puppetclasses.Add("joe");
             request.Instances.Add(r);
 
             HttpClient client = new HttpClient();
@@ -58,7 +58,7 @@ namespace Requester
             rq.Formatter = new XmlMessageFormatter(new[] { typeof(ProvisionTask) });
     
             System.Messaging.Message m;
-            PeekAction action=PeekAction.Current;
+            
             m = GetPeek(rq, cursor, PeekAction.Current);
 
             while (m != null) 

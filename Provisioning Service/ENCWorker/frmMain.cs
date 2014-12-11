@@ -51,14 +51,17 @@ namespace ENCWorker
                 while (m != null)
                 {
                     ProvisionTask task = (ProvisionTask)m.Body;
-                    log(String.Format("Task {1} received.{0}Updating ENC", Environment.NewLine, task.taskid));
+                    log(String.Format("{0} Request to add {1} to {2}", Environment.NewLine, task.hostname,task.puppetmaster));
 
                     m = null;
                     UpdateENC(task);
-
-                    m = GetNextMessage("ENCRequest", "ProvSvc");
                     task.state++;
                     log(String.Format("Passing task back to decider"));
+                    SendMessage(task, "provision", "provsvc");
+                    task = null;
+                    m = null;
+                    m = GetNextMessage("ENCRequest", "ProvSvc");
+                    
                 }
             }
             catch (Exception ex)
@@ -79,19 +82,23 @@ namespace ENCWorker
                 m = rq.Receive(new TimeSpan(0, 0, 0));
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return m;
         }
         private void UpdateENC(ProvisionTask task)
         {
-            SshClient sshclient = new SshClient("192.168.1.51", 22, "root", "Ncc1701d");
+            SshClient sshclient = new SshClient("192.168.1.51", 22, "root", "Ncc1701d");///hmmm need to pull creds from somewhere....
             sshclient.Connect();
-            List<string> results;
+            // List<string> results;
             string classes = "";
             foreach (string s in task.puppetclasses)
                 classes+=String.Format("{0},",s);
             classes=classes.Substring(0,classes.Length-1);
+            log(string.Format("{0} Attempting to remove old node definition", Environment.NewLine));
             SshCommand command3 = sshclient.RunCommand(String.Format("cd /usr/share/puppet-dashboard;rake RAILS_ENV=production node:del name={0}.{1}", task.hostname, task.domain));
+            log(string.Format("{0} Adding node definition for {1} with classes ", Environment.NewLine,task.hostname,classes));
             SshCommand command4 = sshclient.RunCommand(String.Format("cd /usr/share/puppet-dashboard;rake RAILS_ENV=production node:add name={0}.{1} classes={2}", task.hostname, task.domain, classes));
             sshclient.Disconnect();
             sshclient.Dispose();

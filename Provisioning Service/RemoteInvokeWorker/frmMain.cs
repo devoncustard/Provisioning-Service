@@ -61,8 +61,10 @@ namespace RemoteInvokeWorker
                     }
                     task.state++;
                     log(String.Format("Passing task back to decider"));
+                    
                     SendMessage(task,"Provision","provsvc");
                     m = null;
+                    task = null;
                     m=GetNextMessage("RemoteInvoke","ProvSvc");
 
                 }
@@ -90,7 +92,7 @@ namespace RemoteInvokeWorker
                 m = rq.Receive(new TimeSpan(0, 0, 0));
             }
             catch (Exception ex)
-            { }
+            { Debug.WriteLine(ex.Message); }
             return m;
         }
 

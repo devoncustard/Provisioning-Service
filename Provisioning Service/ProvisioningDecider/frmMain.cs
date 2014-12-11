@@ -51,21 +51,33 @@ namespace ProvisioningDecider
                 switch (task.state)
                 {
                     case 0://Posted, no processing
-                        //ok some basic processing of the request first. 
-                        //lets get image details
-                        log(String.Format("Task ID {0} transition to state 0.{1} Requesting AD Computer object.", task.taskid,Environment.NewLine));
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
                         task.image = GetImageDetails(task);
-                        //Reqeust domain object to be created. increment status
                         task.state++;
-                        SendMessage("namerequest", "provsvc", task);
+                        SendMessage(task, "provision", "provsvc");
                         break;
-                    case 1://Domain Object Reqeusted
-                        //ignore
+                    case 1://Pass to ADMgmt
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+
+                        SendMessage(task,"namerequest", "provsvc");
                         break;
-                    case 2://Domain Object Created
-                        
-                        log(String.Format("Task ID {0} transition to state 2. Domain object created. Hostname will be {1}.{3} Sending task to {2} provider",task.taskid,task.hostname,task.provider,Environment.NewLine));
-                        task.state = 3;
+                    case 2:
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        task.state++;
+                        SendMessage(task, "provision", "provsvc");
+                        break;
+                    case 3://Pass to ENC
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        SendMessage(task,"encrequest", "provsvc");
+                        break;
+                    case 4:
+                        log(String.Format("Task ID {0} State {1}", task.taskid, task.state));
+                        task.state++;
+                        SendMessage(task, "provision", "provsvc");
+                        break;
+
+                    case 5://Pass to Provider
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
                         string provider="";
                         switch (task.provider)
                         {
@@ -74,42 +86,45 @@ namespace ProvisioningDecider
                                 break;
 
                         }
-                        SendMessage(String.Format("{0}provider", provider), "provsvc", task);
-                        break;
-                    case 3:
-                        break;
-                    case 4://Instance Provisioned
-                        log(String.Format("Task ID {0} transition to state 4.Instance has been provisioned. Passing to Remote Invocation", task.taskid));
-                        task.state=5;
-                        SendMessage("RemoteInvoke", "provsvc", task);
-                        break;
-
-                    case 5:
+                        SendMessage(task,String.Format("{0}provider", provider), "provsvc");
                         break;
                     case 6:
-                        log(String.Format("Task ID {0} transition to state 6.Cert needs to be signed", task.taskid));
-                        task.state=7;
-                        SendMessage("certsignrequest", "provsvc", task);
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        task.state++;
+                        SendMessage(task, "provision", "provsvc");
                         break;
-                    case 7:
+
+                    case 7://Pass to RemoteInvoker
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        SendMessage(task,"RemoteInvoke", "provsvc");
                         break;
                     case 8:
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        task.state++;
+                        SendMessage(task, "provision", "provsvc");
                         break;
-                    case 9:
+                    case 9://Pass to CertSigner
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        SendMessage(task,"certsignrequest", "provsvc");
                         break;
-                    case 10://Cert signed
+
+                    case 10:
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        task.state++;
+                        SendMessage(task, "provision", "provsvc");
                         break;
-                    case 11://puppet results ready
+                    case 11://Complete
+                        log(String.Format("Task ID {0} State {1}", task.taskid,task.state));
+                        SendMessage(task,"complete", "provsvc");
                         break;
                     default:
-                        SendMessage("complete", "provsvc", task);
                         break;
 
 
 
                 }
                 m = null;
-
+                task = null;
 
                 m = GetNextMessage("provision", "provsvc");
             }
@@ -130,7 +145,9 @@ namespace ProvisioningDecider
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return image;
         }
         private void failed(ProvisionTask task)
@@ -150,10 +167,12 @@ namespace ProvisioningDecider
                 m = rq.Receive(new TimeSpan(0, 0, 0));
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return m;
         }
-        private void SendMessage(string queue, string server, ProvisionTask task)
+        private void SendMessage(ProvisionTask task, string queue, string server)
         {
             MessageQueue rq = new MessageQueue(String.Format(@"FormatName:direct=OS:{0}\private$\{1}", server, queue));
             //rq.Formatter = rq.Formatter = new XmlMessageFormatter(new[] { typeof(ProvisionTask) });

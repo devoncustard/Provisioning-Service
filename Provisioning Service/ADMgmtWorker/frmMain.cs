@@ -98,8 +98,6 @@ namespace ADMgmtWorker
 
         private string RequestName(ProvisionTask task)
         {
-            string oupath="";
-            string servername="";
             string domain = map.MapDomain(task.domain);
             string searchpath = String.Format("LDAP://{0}/{1}", domain, DomainToLDAP(domain));
             //DomainToLDAP(domain);

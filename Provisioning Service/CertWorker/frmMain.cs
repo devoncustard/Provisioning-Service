@@ -52,7 +52,9 @@ namespace CertWorker
                 m = rq.Receive(new TimeSpan(0, 0, 0));
             }
             catch (Exception ex)
-            { }
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return m;
         }
         private void ProcessQueue()
@@ -68,6 +70,7 @@ namespace CertWorker
                     log(String.Format("Task {1} received.{0}ProcessingSigning Cert", Environment.NewLine, task.taskid));
                     ProcessCert(task);
                     m = null;
+                    task = null;
                     m = GetNextMessage("CertSignRequest", "ProvSvc");
                     
                 }
